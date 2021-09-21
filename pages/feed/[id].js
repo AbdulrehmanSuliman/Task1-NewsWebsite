@@ -1,7 +1,13 @@
 import styles from '../../styles/Feed.module.css'
+import {Toolbar} from '../../components/toolbar'
+import {useRouter} from 'next/router'
 export const Feed = ({pageNumber, articles}) => {
+
+    const router = useRouter();
+
     return ( 
        <div className='page-container'>
+            <Toolbar/>
             <div className={styles.main}>
             {articles.map((article,index) => (
                 <div key={index} className={styles.post}>
@@ -12,7 +18,21 @@ export const Feed = ({pageNumber, articles}) => {
             ))}
             </div>
             <div className={styles.paginator}>
-                <div className={pageNumber===1 ? styles.disabled : styles.active }></div>
+                <div
+                 onClick={() =>{
+                   if (pageNumber > 1){
+                    router.push(`/feed/${pageNumber-1}`)
+                   }
+                 }}
+                 className={pageNumber===1 ? styles.disabled : styles.active }>Previous page</div>
+                 <div>#{pageNumber}</div>
+                 <div
+                 onClick={() =>{
+                   if (pageNumber < 5){
+                    router.push(`/feed/${pageNumber+1}`)
+                   }
+                 }}
+                 className={pageNumber===5 ? styles.disabled : styles.active }>Next page</div>
             </div>
        </div>
      );
