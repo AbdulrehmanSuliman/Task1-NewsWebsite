@@ -24,7 +24,8 @@ export const Feed = ({pageNumber, articles}) => {
                     router.push(`/feed/${pageNumber-1}`)
                    }
                  }}
-                 className={pageNumber===1 ? styles.disabled : styles.active }>Previous page</div>
+                 className={pageNumber===1 ? styles.disabled : styles.active }>
+                   Previous page</div>
                  <div>#{pageNumber}</div>
                  <div
                  onClick={() =>{
@@ -32,7 +33,8 @@ export const Feed = ({pageNumber, articles}) => {
                     router.push(`/feed/${pageNumber+1}`)
                    }
                  }}
-                 className={pageNumber===5 ? styles.disabled : styles.active }>Next page</div>
+                 className={pageNumber===5 ? styles.disabled : styles.active }>
+                   Next page</div>
             </div>
        </div>
      );
